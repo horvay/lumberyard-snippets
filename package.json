@@ -1,0 +1,31 @@
+{
+	"name": "lumberyard-snippets",
+	"displayName": "Lumberyard Snippets",
+	"description": "Lumberyard snippets for basic lumberyard constructs",
+	"version": "1.0.0",
+	"publisher": "horvay",
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^0.10.0"
+	},
+	"galleryBanner": {
+		"color": "#1E81C1",
+		"theme": "light"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/horvay/lumberyard-snippets"
+    },
+	"contributes": {
+		"snippets": [
+			{
+				"language": "cpp",
+				"path": "./snippets/cpp.json"
+			}
+		]
+	},
+	"license": "MIT"
+}
