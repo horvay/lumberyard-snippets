@@ -4,7 +4,7 @@
 	"description": "Lumberyard snippets for basic lumberyard constructs",
 	"version": "1.0.0",
 	"publisher": "horvay",
-	"icon": "images/icon.png",
+	"icon": "icon.png",
 	"engines": {
 		"vscode": "^0.10.0"
 	},
