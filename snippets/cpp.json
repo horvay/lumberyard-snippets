@@ -13,7 +13,7 @@
             "    public:",
             "        AZ_COMPONENT($2, \"\")",
             "",
-            "        ~$2() override;",
+            "        ~$2() override {};",
             "",
             "        static void Reflect(AZ::ReflectContext* reflection);",
             "",
