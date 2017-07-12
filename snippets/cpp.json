@@ -46,7 +46,7 @@
             "        {",
             "            editContext->Class<$2>(\"$2\", \"$3\")",
             "                ->ClassElement(AZ::Edit::ClassElements::EditorData, \"\")",
-            "                ->Attribute(AZ::Edit::Attributes::Category, \"$4\")",
+            "                ->Attribute(AZ::Edit::Attributes::Category, \"$4\");",
             "        }",
             "    }",
             "}",
