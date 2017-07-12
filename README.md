@@ -7,6 +7,7 @@ The current snippets include:
 * General ebus snippet - keyword: ebustraits
 
 Here is the Component Header snippet
+
 ![alt text](comph_example.gif)
 
 
