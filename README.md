@@ -8,8 +8,10 @@ The current snippets include:
 * LY Unit test snippet - keyword: unitt
 * LY Integration test snippet - keyword: integt
 
-Here is the Component Header snippet
+Here is the Component Header and Source snippet
 
-![alt text](comph_example.gif)
+![snip snip](comph_example.gif)
 
-
+## changelist
+* 2018-04-03 - updated to support LY 1.13
+* 2017-07-14 - initial version

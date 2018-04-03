@@ -29,7 +29,7 @@
     "ComponentSource": {
         "prefix": "comps",
         "body": [
-            "#include \"StdAfx.h\"",
+            "#include \"$1_precompiled.h\"",
             "#include \"$2.h\"",
             "#include <AzCore/Serialization/EditContext.h>",
             "",
@@ -46,7 +46,8 @@
             "        {",
             "            editContext->Class<$2>(\"$2\", \"$3\")",
             "                ->ClassElement(AZ::Edit::ClassElements::EditorData, \"\")",
-            "                ->Attribute(AZ::Edit::Attributes::Category, \"$1\");",
+            "                ->Attribute(AZ::Edit::Attributes::Category, \"$1\")",
+            "                ->Attribute(AZ::Edit::Attributes::AppearsInAddComponentMenu, AZ_CRC(\"Game\"));",
             "        }",
             "    }",
             "}",
@@ -111,7 +112,7 @@
     "integt": {
         "prefix": "integt",
         "body": [
-            "#include \"StdAfx.h\"",
+            "#include \"$2_precompiled.h\"",
             "",
             "#include <AzTest/AzTest.h>",
             "",
@@ -145,7 +146,7 @@
     "unitt": {
         "prefix": "unitt",
         "body": [
-            "#include \"StdAfx.h\"",
+            "#include \"$2_precompiled.h\"",
             "",
             "#include <AzTest/AzTest.h>",
             "",

@@ -2,7 +2,7 @@
 	"name": "lumberyard-snippets",
 	"displayName": "Lumberyard Snippets",
 	"description": "Lumberyard snippets for basic lumberyard constructs",
-	"version": "1.0.7",
+	"version": "1.1.0",
 	"publisher": "horvay",
 	"icon": "icon.png",
 	"engines": {
