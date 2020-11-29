@@ -7,13 +7,11 @@
             "",
             "namespace $1",
             "{",
-            "    class $2",
+            "    class $TM_FILENAME_BASE",
             "        : public AZ::Component",
             "    {",
             "    public:",
-            "        AZ_COMPONENT($2, \"\")",
-            "",
-            "        ~$2() override {};",
+            "        AZ_COMPONENT($TM_FILENAME_BASE, \"{${CLIPBOARD}}\"); // NOLINT",
             "",
             "        static void Reflect(AZ::ReflectContext* reflection);",
             "",
@@ -22,47 +20,48 @@
             "        void Deactivate() override;",
             "",
             "    };",
-            "}"
+            "} // namespace $1",
+            ""
         ],
         "description": "Create LY component header"
     },
     "ComponentSource": {
         "prefix": "comps",
         "body": [
-            "#include \"$1_precompiled.h\"",
-            "#include \"$2.h\"",
+            "#include \"$TM_FILENAME_BASE.h\"",
             "#include <AzCore/Serialization/EditContext.h>",
             "",
-            "using namespace $1;",
-            "",
-            "void $2::Reflect(AZ::ReflectContext* reflection)",
+            "namespace $1",
             "{",
-            "    if (auto serializationContext = azrtti_cast<AZ::SerializeContext*>(reflection))",
-            "    {",
-            "        serializationContext->Class<$2>()",
-            "            ->Version(1);",
+            "   void $TM_FILENAME_BASE::Reflect(AZ::ReflectContext* reflection)",
+            "   {",
+            "       if (auto serializationContext = azrtti_cast<AZ::SerializeContext*>(reflection))",
+            "       {",
+            "           serializationContext->Class<$TM_FILENAME_BASE>()",
+            "               ->Version(1);",
             "",
-            "        if (auto editContext = serializationContext->GetEditContext())",
-            "        {",
-            "            editContext->Class<$2>(\"$2\", \"$3\")",
-            "                ->ClassElement(AZ::Edit::ClassElements::EditorData, \"\")",
-            "                ->Attribute(AZ::Edit::Attributes::Category, \"$1\")",
-            "                ->Attribute(AZ::Edit::Attributes::AppearsInAddComponentMenu, AZ_CRC(\"Game\"));",
-            "        }",
-            "    }",
-            "}",
+            "           if (auto editContext = serializationContext->GetEditContext())",
+            "           {",
+            "               editContext->Class<$TM_FILENAME_BASE>(\"$TM_FILENAME_BASE\", \"$2\")",
+            "                   ->ClassElement(AZ::Edit::ClassElements::EditorData, \"\")",
+            "                   ->Attribute(AZ::Edit::Attributes::Category, \"$1\")",
+            "                   ->Attribute(AZ::Edit::Attributes::AppearsInAddComponentMenu, AZ_CRC(\"Game\"));",
+            "           }",
+            "       }",
+            "   }",
             "",
-            "void $2::Init()",
-            "{",
-            "}",
+            "   void $TM_FILENAME_BASE::Init()",
+            "   {",
+            "   }",
             "",
-            "void $2::Activate()",
-            "{",
-            "}",
-            "",
-            "void $2::Deactivate()",
-            "{",
-            "}",
+            "   void $TM_FILENAME_BASE::Activate()",
+            "   {",
+            "   }",
+            "  ",
+            "   void $TM_FILENAME_BASE::Deactivate()",
+            "   {",
+            "   }",
+            "} // namespace $1",
             ""
         ],
         "description": "Create LY component source"
@@ -112,8 +111,6 @@
     "integt": {
         "prefix": "integt",
         "body": [
-            "#include \"$2_precompiled.h\"",
-            "",
             "#include <AzTest/AzTest.h>",
             "",
             "class Integ_$1Tests",
@@ -146,8 +143,6 @@
     "unitt": {
         "prefix": "unitt",
         "body": [
-            "#include \"$2_precompiled.h\"",
-            "",
             "#include <AzTest/AzTest.h>",
             "",
             "class $1Tests",
@@ -176,5 +171,56 @@
             ""
         ],
         "description": "Create LY unit test"
+    },
+    "lyrf": {
+        "prefix": "lyrf",
+        "body": [
+            "->Field( \"$CLIPBOARD\", &$TM_FILENAME_BASE::$CLIPBOARD )"
+        ],
+        "description": "Create reflection field"
+    },
+    "lyrd": {
+        "prefix": "lyrd",
+        "body": [
+            "->DataElement( AZ::Edit::UIHandlers::Default, &$TM_FILENAME_BASE::$CLIPBOARD, \"$1\", \"[$2]\" )"
+        ],
+        "description": "Create reflection data element"
+    },
+    "event": {
+        "prefix": "event",
+        "body": [
+            "$1::Event( GetEntityId(), &$1::Events::$2 );"
+        ],
+        "description": "Create reflection data element"
+    },
+    "eventr": {
+        "prefix": "eventr",
+        "body": [
+            "$1::EventResult( $CLIPBOARD, GetEntityId(), &$1:Events::$2 );"
+        ],
+        "description": "Create reflection data element"
+    },
+    "broadc": {
+        "prefix": "broadc",
+        "body": [
+            "$1::Broadcast( &$1::Events::$2 );"
+        ],
+        "description": "Create reflection data element"
+    },
+    "broadcr": {
+        "prefix": "broadcr",
+        "body": [
+            "$1::BroadcastResult( $CLIPBOARD, &$1:Events::$2 );"
+        ],
+        "description": "Create reflection data element"
+    },
+    "module": {
+        "prefix": "module",
+        "body": [
+            "#include \"$CLIPBOARD.h\"",
+            "$CLIPBOARD::CreateDescriptor(),"
+        ],
+        "description": "Create reflection data element"
     }
+
 }
